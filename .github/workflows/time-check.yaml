@@ -8,11 +8,10 @@ jobs:
     steps:
       - name: Check minute
         run: |
-          echo "Current time:"
-          date
-          if [[ "$(date +'%M')" -ge 50 ]]; then
-            echo "Time is between 50 and 60 minutes. Exiting..."
+          echo "Current time: $(date)"
+          MINUTE=$(date +'%M')
+          if [[ "$MINUTE" -ge 50 ]] || [[ "$MINUTE" -le 4 ]]; then
+            echo "This build can only be executed between 05 and 49 minutes of each hour."
             exit 1
-          else
-            echo "Time is not between 50 and 60 minutes. Continuing..."
           fi
+          
