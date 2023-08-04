@@ -16,5 +16,5 @@ jobs:
           fi
       - name: Next step
         run: |
-          echo "Next step star ..."
+          echo "Next step start ..."
           
