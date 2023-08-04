@@ -1,0 +1,18 @@
+name: Time Check
+
+on: workflow_dispatch
+
+jobs:
+  check-time:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check minute
+        run: |
+          echo "Current time:"
+          date
+          if [[ "$(date +'%M')" -ge 50 ]]; then
+            echo "Time is between 50 and 60 minutes. Exiting..."
+            exit 1
+          else
+            echo "Time is not between 50 and 60 minutes. Continuing..."
+          fi
